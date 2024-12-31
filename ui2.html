@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TorrentMonkey Glass</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-color: #00ff88;
+            --grad-1: #4158D0;
+            --grad-2: #C850C0;
+            --grad-3: #FFCC70;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, var(--grad-1), var(--grad-2), var(--grad-3));
+            min-height: 100vh;
+            color: white;
+            animation: gradientBG 15s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+        }
+
+        .app-container {
+            padding: 20px;
+            max-width: 1440px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            gap: 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 24px;
+            color: var(--accent-color);
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .nav-tab {
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab:hover, .nav-tab.active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: white;
+        }
+
+        .action-btn:hover {
+            background: var(--accent-color);
+            color: black;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .torrent-card {
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .torrent-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .torrent-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .torrent-title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .torrent-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .info-label {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .info-value {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .status-tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .media-player {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            padding: 20px;
+            border-radius: 20px;
+            z-index: 1000;
+            display: none;
+            backdrop-filter: blur(20px);
+        }
+
+        .media-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .media-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .media-btn:hover {
+            background: var(--accent-color);
+            color: black;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: none;
+            z-index: 999;
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs {
+                display: none;
+            }
+            
+            .header {
+                grid-template-columns: auto auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="header glass">
+            <div class="logo">
+                <i class="fas fa-magnet"></i>
+                <h1>TorrentMonkey</h1>
+            </div>
+            <div class="nav-tabs">
+                <div class="nav-tab active">All Downloads</div>
+                <div class="nav-tab">Completed</div>
+                <div class="nav-tab">Active</div>
+                <div class="nav-tab">Paused</div>
+            </div>
+            <div class="user-actions">
+                <button class="action-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="action-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content" id="torrentList">
+            <!-- Torrents will be added here dynamically -->
+        </main>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="media-player glass" id="mediaPlayer">
+        <video width="800" height="450" controls>
+            <source src="" type="video/mp4">
+            Your browser does not support the video player.
+        </video>
+        <div class="media-controls">
+            <button class="media-btn"><i class="fas fa-backward"></i></button>
+            <button class="media-btn"><i class="fas fa-play"></i></button>
+            <button class="media-btn"><i class="fas fa-forward"></i></button>
+        </div>
+    </div>
+
+    <script>
+        const torrents = [
+            {
+                name: "Cosmos: A Spacetime Odyssey",
+                size: "15.4 GB",
+                downSpeed: "4.2 MB/s",
+                upSpeed: "2.1 MB/s",
+                eta: "01:23:45",
+                progress: 68,
+                status: "Downloading",
+                peers: 125,
+                seeds: 84
+            },
+            {
+                name: "Blender Animation Studio Collection",
+                size: "8.2 GB",
+                downSpeed: "3.8 MB/s",
+                upSpeed: "1.5 MB/s",
+                eta: "00:45:12",
+                progress: 92,
+                status: "Almost Done",
+                peers: 45,
+                seeds: 30
+            },
+            {
+                name: "Creative Commons Music Pack",
+                size: "2.1 GB",
+                downSpeed: "2.5 MB/s",
+                upSpeed: "1.0 MB/s",
+                eta: "00:15:30",
+                progress: 45,
+                status: "Active",
+                peers: 65,
+                seeds: 42
+            },
+            {
+                name: "Linux Distribution Bundle",
+                size: "4.7 GB",
+                downSpeed: "3.1 MB/s",
+                upSpeed: "1.8 MB/s",
+                eta: "00:33:20",
+                progress: 25,
+                status: "Starting",
+                peers: 89,
+                seeds: 56
+            }
+        ];
+
+        function createTorrentCard(torrent) {
+            const div = document.createElement('div');
+            div.className = 'torrent-card glass';
+            div.innerHTML = `
+                <div class="torrent-header">
+                    <div class="torrent-title">${torrent.name}</div>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+                <div class="torrent-info">
+                    <div class="info-item">
+                        <span class="info-label">Size</span>
+                        <span class="info-value">${torrent.size}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Download</span>
+                        <span class="info-value">${torrent.downSpeed}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Upload</span>
+                        <span class="info-value">${torrent.upSpeed}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">ETA</span>
+                        <span class="info-value">${torrent.eta}</span>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: ${torrent.progress}%"></div>
+                </div>
+                <div class="status-tags">
+                    <span class="tag">${torrent.status}</span>
+                    <span class="tag">${torrent.peers} peers</span>
+                    <span class="tag">${torrent.seeds} seeds</span>
+                </div>
+            `;
+            div.addEventListener('click', () => openMediaPlayer(torrent));
+            return div;
+        }
+
+        function openMediaPlayer(torrent) {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('mediaPlayer').style.display = 'block';
+        }
+
+        function closeMediaPlayer() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('mediaPlayer').style.display = 'none';
+        }
+
+        // Initialize torrent list
+        const torrentList = document.getElementById('torrentList');
+        torrents.forEach(torrent => {
+            torrentList.appendChild(createTorrentCard(torrent));
+        });
+
+        // Close media player when clicking overlay
+        document.getElementById('overlay').addEventListener('click', closeMediaPlayer);
+    </script>
+</body>
+</html>
