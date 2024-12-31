@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TorrentMonkey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        .menu-bar {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu-item {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .menu-content {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .menu-item:hover .menu-content {
+            display: block;
+        }
+
+        .menu-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .menu-content a:hover {
+            background-color: #555;
+        }
+
+        .torrent-list {
+            margin: 20px;
+        }
+
+        .torrent-item {
+            background-color: #2a2a2a;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .torrent-item:hover {
+            background-color: #3a3a3a;
+        }
+
+        .torrent-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background-color: #444;
+            margin-top: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .media-player {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 2;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.7);
+            display: none;
+            z-index: 1;
+        }
+
+        .close-button {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-bar">
+        <div class="menu-item">
+            File
+            <div class="menu-content">
+                <a href="#"><i class="fas fa-plus"></i> Add Torrent</a>
+                <a href="#"><i class="fas fa-folder-open"></i> Open Folder</a>
+                <a href="#"><i class="fas fa-sign-out-alt"></i> Exit</a>
+            </div>
+        </div>
+        <div class="menu-item">
+            Options
+            <div class="menu-content">
+                <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                <a href="#"><i class="fas fa-download"></i> Download Settings</a>
+                <a href="#"><i class="fas fa-upload"></i> Upload Settings</a>
+            </div>
+        </div>
+        <div class="menu-item">
+            Help
+            <div class="menu-content">
+                <a href="#"><i class="fas fa-question-circle"></i> About</a>
+                <a href="#"><i class="fas fa-info-circle"></i> Documentation</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="torrent-list" id="torrentList">
+        <!-- Torrents will be added here dynamically -->
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="media-player" id="mediaPlayer">
+        <div class="close-button" onclick="closeMediaPlayer()">✕</div>
+        <video width="800" height="450" controls>
+            <source src="" type="video/mp4">
+            Your browser does not support the video player.
+        </video>
+    </div>
+
+    <script>
+        // Sample torrent data
+        const torrents = [
+            {
+                name: "Big Buck Bunny",
+                size: "276.2 MB",
+                downSpeed: "2.1 MB/s",
+                upSpeed: "1.2 MB/s",
+                eta: "00:05:23",
+                progress: 65
+            },
+            {
+                name: "Nature Documentary 2023",
+                size: "1.2 GB",
+                downSpeed: "3.5 MB/s",
+                upSpeed: "0.8 MB/s",
+                eta: "00:15:45",
+                progress: 35
+            },
+            {
+                name: "Educational Series",
+                size: "4.5 GB",
+                downSpeed: "1.8 MB/s",
+                upSpeed: "0.5 MB/s",
+                eta: "01:23:12",
+                progress: 90
+            }
+        ];
+
+        function createTorrentElement(torrent) {
+            const div = document.createElement('div');
+            div.className = 'torrent-item';
+            div.innerHTML = `
+                <div class="torrent-details">
+                    <div>
+                        <h3>${torrent.name}</h3>
+                        <p>Size: ${torrent.size}</p>
+                    </div>
+                    <div>
+                        <p>↓ ${torrent.downSpeed}</p>
+                        <p>↑ ${torrent.upSpeed}</p>
+                        <p>ETA: ${torrent.eta}</p>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: ${torrent.progress}%"></div>
+                </div>
+            `;
+            div.addEventListener('click', () => openMediaPlayer(torrent));
+            return div;
+        }
+
+        function openMediaPlayer(torrent) {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('mediaPlayer').style.display = 'block';
+        }
+
+        function closeMediaPlayer() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('mediaPlayer').style.display = 'none';
+        }
+
+        // Initialize torrent list
+        const torrentList = document.getElementById('torrentList');
+        torrents.forEach(torrent => {
+            torrentList.appendChild(createTorrentElement(torrent));
+        });
+
+        // Close media player when clicking overlay
+        document.getElementById('overlay').addEventListener('click', closeMediaPlayer);
+    </script>
+</body>
+</html>
