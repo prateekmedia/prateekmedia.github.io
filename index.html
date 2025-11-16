@@ -1,41 +1,343 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prateek Sunal - Flutter Developer & Open Source Enthusiast">
+    <meta name="author" content="Prateek Sunal">
+    <meta name="theme-color" content="#0a0a0f">
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+    <title>Prateek Sunal // Systems Engineer</title>
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="manifest" href="manifest.json">
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
+    <!-- Fonts: JetBrains Mono (display), Rajdhani (body), Share Tech Mono (code) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="My Portfolio inspired by VSCode">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="VXPort">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
-
-  <title>VXPort</title>
-  <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/main.css">
 </head>
-
 <body>
-  <script src="flutter_bootstrap.js" async></script>
-</body>
+    <!-- Three.js Canvas Background -->
+    <canvas id="cosmic-canvas" width="1920" height="1080"></canvas>
 
+    <!-- Scan Line Effect -->
+    <div class="scanline"></div>
+
+    <!-- Vignette Overlay -->
+    <div class="vignette"></div>
+
+    <!-- Legacy Site Button -->
+    <a href="../legacy" class="legacy-button" title="View legacy vxport portfolio">LEGACY</a>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <div class="glitch-wrapper">
+                    <h1 class="hero-title glitch" data-text="PRATEEK SUNAL">PRATEEK SUNAL</h1>
+                </div>
+                <div class="hero-subtitle-wrapper">
+                    <span class="status-indicator"></span>
+                    <p class="hero-subtitle">ENGINEER <span class="separator">|</span> PROBLEM SOLVER</p>
+                </div>
+
+                <!-- GitHub Stats -->
+                <div class="github-stats-container">
+                    <img src="https://github.com/prateekmedia/github-stats/blob/master/generated/overview.svg?raw=true" alt="GitHub Stats Overview" class="github-stats-image">
+                    <img src="https://github.com/prateekmedia/github-stats/blob/master/generated/languages.svg?raw=true" alt="GitHub Language Stats" class="github-stats-image">
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#mission" class="btn-primary">
+                        <span class="btn-text">VIEW PROFILE</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                        <span class="btn-text">GET IN TOUCH</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <div class="scroll-line"></div>
+                <span class="scroll-text">SCROLL TO EXPLORE</span>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="mission" class="section mission-section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">ABOUT</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="mission-grid">
+                <div class="mission-card main-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="avatar-wrapper">
+                            <img src="https://avatars.githubusercontent.com/u/41370460" alt="Prateek Sunal" class="avatar">
+                            <div class="avatar-ring"></div>
+                        </div>
+                        <h3 class="card-title">PROFESSIONAL OVERVIEW</h3>
+                        <p class="card-text">
+                            I'm <strong>Prateek Sunal</strong>, an applied Flutter engineer since 2020 focused on
+                            building resilient, observable mobile systems and upstreaming improvements to the
+                            open-source ecosystem. I have delivered architectures for <strong>20+ production-grade
+                            applications</strong> along with several high-signal community projects.
+                        </p>
+                        <p class="card-text">
+                            As a two-time <strong>Google Summer of Code</strong> contributor ('23 & '24), I specialize
+                            in translating ambiguous problem statements into deterministic solutions that balance
+                            design systems with verifiable performance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mission-card tech-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">TECH STACK</h3>
+                        <div class="tech-grid">
+                            <div class="tech-item">
+                                <div class="tech-icon">⚡</div>
+                                <span class="tech-name">Flutter</span>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon">🦀</div>
+                                <span class="tech-name">Rust</span>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon">⚛️</div>
+                                <span class="tech-name">React</span>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon">🐍</div>
+                                <span class="tech-name">Python</span>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon">🎯</div>
+                                <span class="tech-name">Django</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects-section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">PROJECTS</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="projects-tabs">
+                <button class="tab-btn active" data-tab="opensource">OPEN SOURCE</button>
+                <button class="tab-btn" data-tab="commercial">COMMERCIAL</button>
+            </div>
+
+            <!-- Open Source Projects -->
+            <div id="opensource" class="projects-grid active">
+                <a href="https://github.com/prateekmedia/appimagepool" target="_blank" class="project-card featured">
+                    <h3 class="project-title">AppImage Pool</h3>
+                    <div class="project-meta">
+                        <img src="https://img.shields.io/github/stars/prateekmedia/appimagepool?style=flat-square" alt="GitHub Stars" class="github-stars-badge">
+                        <span class="project-tag featured-tag">FEATURED</span>
+                    </div>
+                    <img src="https://raw.githubusercontent.com/prateekmedia/appimagepool/main/assets/screenshot/search.jpg" alt="AppImage Pool Screenshot" class="project-screenshot">
+                    <p class="project-description">
+                        Universal App Store for Linux with AppImage discovery and lifecycle management.
+                    </p>
+                </a>
+
+                <a href="https://github.com/prateekmedia/pstube" target="_blank" class="project-card">
+                    <h3 class="project-title">PsTube</h3>
+                    <div class="project-meta">
+                        <img src="https://img.shields.io/github/stars/prateekmedia/pstube?style=flat-square" alt="GitHub Stars" class="github-stars-badge">
+                        <span class="project-tag">MULTIMEDIA</span>
+                    </div>
+                    <img src="https://raw.githubusercontent.com/prateekmedia/pstube/refs/heads/main/assets/screenshots/home-desktop.jpg" alt="PsTube Screenshot" class="project-screenshot">
+                    <p class="project-description">
+                        Privacy-focused YouTube client with ad blocking and optimized playback.
+                    </p>
+                </a>
+
+                <a href="https://github.com/prateekmedia/netspeedsimplified" target="_blank" class="project-card">
+                    <h3 class="project-title">NetSpeedSimplified</h3>
+                    <div class="project-meta">
+                        <img src="https://img.shields.io/github/stars/prateekmedia/netspeedsimplified?style=flat-square" alt="GitHub Stars" class="github-stars-badge">
+                        <span class="project-tag">GNOME</span>
+                    </div>
+                    <img src="https://camo.githubusercontent.com/794c78bf99f2627a49a1abe5a17eb9443407d980b30b0ab9e387755a68162e52/68747470733a2f2f657874656e73696f6e732e676e6f6d652e6f72672f657874656e73696f6e2d646174612f73637265656e73686f74732f73637265656e73686f745f333732342e676966" alt="NetSpeedSimplified Screenshot" class="project-screenshot">
+                    <p class="project-description">
+                        GNOME Shell extension for real-time network throughput monitoring.
+                    </p>
+                </a>
+
+                <a href="https://github.com/gtk-flutter/libadwaita" target="_blank" class="project-card">
+                    <h3 class="project-title">Libadwaita for Flutter</h3>
+                    <div class="project-meta">
+                        <img src="https://img.shields.io/github/stars/gtk-flutter/libadwaita?style=flat-square" alt="GitHub Stars" class="github-stars-badge">
+                        <span class="project-tag">UI/UX</span>
+                    </div>
+                    <img src="https://user-images.githubusercontent.com/41370460/154982398-70778cd9-b25e-410f-99bb-5804b33bfe38.png" alt="Libadwaita for Flutter Screenshot" class="project-screenshot">
+                    <p class="project-description">
+                        GNOME Libadwaita widgets ported to Flutter for native Linux design.
+                    </p>
+                </a>
+            </div>
+
+            <!-- Commercial Projects -->
+            <div id="commercial" class="projects-grid">
+                <div class="commercial-list">
+                    <a href="https://apps.apple.com/in/app/datsme-social-wellness-app/id1673755666" target="_blank" class="commercial-item">
+                        <div class="commercial-screenshot-container">
+                            <img src="https://raw.githubusercontent.com/prateekmedia/vxport/refs/heads/4-assets/assets/dm.png" alt="Datsme" class="commercial-screenshot">
+                        </div>
+                        <div class="commercial-info">
+                            <h4 class="commercial-name">Datsme AI</h4>
+                            <p class="commercial-desc">Social wellness platform with behavioral analytics</p>
+                        </div>
+                    </a>
+                    <a href="https://apps.apple.com/us/app/flashsend/id6446861546" target="_blank" class="commercial-item">
+                        <div class="commercial-screenshot-container">
+                            <img src="https://raw.githubusercontent.com/prateekmedia/vxport/refs/heads/4-assets/assets/fs.jpg" alt="FlashSend" class="commercial-screenshot">
+                        </div>
+                        <div class="commercial-info">
+                            <h4 class="commercial-name">FlashSend</h4>
+                            <p class="commercial-desc">Low-latency payment client with biometric auth</p>
+                        </div>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.avafitness.app&hl=en&gl=US" target="_blank" class="commercial-item">
+                        <div class="commercial-screenshot-container">
+                            <img src="https://raw.githubusercontent.com/prateekmedia/vxport/refs/heads/4-assets/assets/ava.png" alt="Ava Fitness" class="commercial-screenshot">
+                        </div>
+                        <div class="commercial-info">
+                            <h4 class="commercial-name">Ava Fitness</h4>
+                            <p class="commercial-desc">Women's fitness assistant with adaptive plans</p>
+                        </div>
+                    </a>
+                    <a href="https://apps.apple.com/in/app/select-tube-reduce-time-waste/id1624409170" target="_blank" class="commercial-item">
+                        <div class="commercial-screenshot-container">
+                            <img src="https://raw.githubusercontent.com/prateekmedia/vxport/refs/heads/4-assets/assets/selecttube.webp" alt="Select Tube" class="commercial-screenshot">
+                        </div>
+                        <div class="commercial-info">
+                            <h4 class="commercial-name">Select Tube</h4>
+                            <p class="commercial-desc">Cross-platform YouTube client with offline cache</p>
+                        </div>
+                    </a>
+                    <a href="https://www.appbrain.com/appstore/nemnem-lite-read-aroud-app/ios-1645742861" target="_blank" class="commercial-item">
+                        <div class="commercial-screenshot-container">
+                            <img src="https://raw.githubusercontent.com/prateekmedia/vxport/refs/heads/4-assets/assets/nemnem.png" alt="Nemnem" class="commercial-screenshot">
+                        </div>
+                        <div class="commercial-info">
+                            <h4 class="commercial-name">Nemnem</h4>
+                            <p class="commercial-desc">Children's storytelling engine with audio synthesis</p>
+                        </div>
+                    </a>
+                    <a href="https://dayhee.en.softonic.com/android" target="_blank" class="commercial-item">
+                        <div class="commercial-screenshot-container">
+                            <img src="https://raw.githubusercontent.com/prateekmedia/vxport/refs/heads/4-assets/assets/dh.avif" alt="Dayhee" class="commercial-screenshot">
+                        </div>
+                        <div class="commercial-info">
+                            <h4 class="commercial-name">Dayhee</h4>
+                            <p class="commercial-desc">Parenting consultation network with secure telehealth</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">CONTACT</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <h3 class="contact-title">CONNECT</h3>
+                        <p class="contact-subtitle">Let's collaborate. Choose the platform that works best for you:</p>
+
+                        <div class="contact-links">
+                            <a href="mailto:workwithme@sunal.in" class="contact-link" target="_blank">
+                                <span class="contact-icon">✉️</span>
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">workwithme@sunal.in</span>
+                            </a>
+                            <a href="https://github.com/prateekmedia" class="contact-link" target="_blank">
+                                <span class="contact-icon"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span>
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-value">@prateekmedia</span>
+                            </a>
+                            <a href="https://linkedin.com/in/prateek-sunal" class="contact-link" target="_blank">
+                                <span class="contact-icon">🔗</span>
+                                <span class="contact-label">LinkedIn</span>
+                                <span class="contact-value">prateek-sunal</span>
+                            </a>
+                            <a href="https://x.com/prateek_su" class="contact-link" target="_blank">
+                                <span class="contact-icon"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>X</title><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></span>
+                                <span class="contact-label">Twitter/X</span>
+                                <span class="contact-value">@prateek_su</span>
+                            </a>
+                            <a href="https://t.me/prateek_media" class="contact-link" target="_blank">
+                                <span class="contact-icon"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>
+                                <span class="contact-label">Telegram</span>
+                                <span class="contact-value">@prateek_media</span>
+                            </a>
+                            <a href="https://discord.com/users/prateeksunal" class="contact-link" target="_blank">
+                                <span class="contact-icon"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Discord</title><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg></span>
+                                <span class="contact-label">Discord</span>
+                                <span class="contact-value">prateeksunal</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-text">
+                    <span class="footer-label">SYSTEM VERSION</span>
+                    <span class="footer-value">0.2.0</span>
+                    <span class="footer-separator">|</span>
+                    <span class="footer-label">LOCATION</span>
+                    <span class="footer-value">prateek.sunal.in</span>
+                </p>
+                <p class="footer-credits">
+                    Built by <strong>Prateek Sunal</strong> © 2025
+                </p>
+            </div>
+        </footer>
+
+        <!-- Image Viewer Modal -->
+        <div id="imageViewer" class="image-viewer-modal">
+            <div class="image-viewer-content">
+                <button class="image-viewer-close">&times;</button>
+                <img id="viewerImage" src="" alt="Enlarged view" class="viewer-image">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+</body>
 </html>
