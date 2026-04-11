@@ -1,4 +1,8 @@
-# Vibing Fast and Slow
+---
+title: Vibing Fast and Slow
+date: April 11, 2026
+author: Prateek Sunal
+---
 
 Over the last year, I’ve been trying to understand this shift in software development where developers have started becoming vibe coders, and vibe coders have started, well… doing nothing.
 
@@ -237,4 +241,4 @@ Because AI is very good at generating code fast. But speed is not judgment.
 
 So yes, let the agent move fast. Let it surprise you. Let it give you a POC in minutes.
 
-But after that, take control back.
+But after that, take control back. Because the code is not the product. Your judgment is.
