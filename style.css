@@ -2,11 +2,11 @@ html {
   font-size: 62.5%;
 }
 
-.body_container {
+body {
   height: 100%;
   padding: 0 24px;
   max-width: 65rem;
-  margin: auto auto;
+  margin: auto;
   font-family: Inter, Arial, Helvetica, sans-serif;
   background-color: #f4f6fa;
 }
@@ -17,24 +17,24 @@ a {
 
 /* Misc */
 
-.divider {
-  border: none;
-  background-color: rgb(236, 235, 235);
-  height: 2px;
-  margin: 30px 0px;
-}
-
 .header_link,
 .footer_link {
   color: rgb(136, 136, 136);
   font-size: 1.4rem;
-  padding: 0px 4px;
+  padding: 0 4px;
   letter-spacing: 0.1rem;
+}
+
+.divider {
+  border: none;
+  background-color: rgb(236, 235, 235);
+  height: 2px;
+  margin: 30px 0;
 }
 
 /* Header */
 
-.header_container {
+.site_header {
   margin-top: 3rem;
   display: flex;
   justify-content: space-between;
@@ -64,15 +64,15 @@ a {
   color: rgb(134, 134, 134);
 }
 
-/* Experience */
+/* Items */
 
-.experience_card {
+.item_card {
   margin: 1.2rem 0;
   display: flex;
   flex-direction: column;
 }
 
-.experience_header {
+.item_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -80,30 +80,24 @@ a {
   margin-bottom: 0.3rem;
 }
 
-.experience_info {
-  display: flex;
-  gap: 1.2rem;
-  align-items: center;
-}
-
-.experience_name a {
+.item_name a {
   font-size: 1.4rem;
   text-decoration: none;
   color: black;
 }
 
-.experience_duration {
+.item_meta {
   color: rgb(169, 169, 169);
   font-weight: 600;
   font-size: 1.2rem;
 }
 
-.experience_title {
+.item_title {
   font-size: 1.2rem;
   color: rgb(130, 130, 130);
 }
 
-.experience_details {
+.item_details {
   margin: 1rem 0;
   padding: 0 2rem;
   font-size: 1.4rem;
@@ -111,15 +105,9 @@ a {
   list-style-type: disc;
 }
 
-.experience_detail {
+.item_detail {
   font-size: 1.4rem;
   line-height: 2.4rem;
-}
-
-.gh_stars {
-  color: rgb(169, 169, 169);
-  font-weight: 600;
-  font-size: 1.2rem;
 }
 
 /* Footer */

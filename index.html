@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="body_container">
-  <header class="header_container">
+<body>
+  <header class="site_header">
     <div class="header_info">
       <h1 class="header_title">
         Prateek Sunal
@@ -18,48 +18,40 @@
         Bengaluru, India
       </p>
     </div>
-    <div class="header_links">
+    <nav class="header_links" aria-label="Social links">
       <a href="https://github.com/prateekmedia" class="header_link">Github</a>
       <a href="https://linkedin.com/in/prateek-sunal" class="header_link">Linkedin</a>
       <a href="https://x.com/prateek_su" class="header_link">X</a>
-    </div>
+    </nav>
   </header>
   <hr class="divider">
   <main class="main_content">
-    <section class="experience_section">
+    <section>
       <h2 class="section_title">Experience</h2>
-      <div class="experience_container">
-        <div class="experience_card">
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a href="https://usebruno.com">
-                  Bruno
-                </a>
-              </h2>
-            </div>
-            <h3 class="experience_duration">Apr 2026 - Present</h3>
+      <div class="item_list">
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a href="https://usebruno.com">Bruno</a>
+            </h2>
+            <h3 class="item_meta">Apr 2026 - Present</h3>
           </div>
-          <div class="experience_title">Senior Software Engineer</div>
-          <ul class="experience_details">
+          <div class="item_title">Senior Software Engineer</div>
+          <ul class="item_details">
             <li>Working on improving Import / Export flow</li>
             <li>Working on improving Git / Git Providers integration</li>
             <li>Working on improving AI/MCP integration</li>
           </ul>
         </div>
-        <div class="experience_card">
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a href="https://ente.com">
-                  Ente
-                </a>
-              </h2>
-            </div>
-            <h3 class="experience_duration">Jan 2024 - Mar 2026</h3>
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a href="https://ente.com">Ente</a>
+            </h2>
+            <h3 class="item_meta">Jan 2024 - Mar 2026</h3>
           </div>
-          <div class="experience_title">Software Engineer</div>
-          <ul class="experience_details">
+          <div class="item_title">Software Engineer</div>
+          <ul class="item_details">
             <li>Implemented end-to-end encrypted video streaming solution (IndiaFOSS talk)</li>
             <li>Faster and reliable uploads with background processing and multipart uploads</li>
             <li>Built a plugin for native video editor, 7 times faster than existing plugin</li>
@@ -69,18 +61,14 @@
             <li>Engineered a desktop version of the 2FA app, Ente Auth, used by 300k users</li>
           </ul>
         </div>
-        <div class="experience_card">
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a href="https://github.com/CCExtractor/ccextractor.git">
-                  Google Summer of Code
-                </a>
-              </h2>
-            </div>
-            <h3 class="experience_duration">2023 - Present</h3>
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a href="https://github.com/CCExtractor/ccextractor.git">Google Summer of Code</a>
+            </h2>
+            <h3 class="item_meta">2023 - Present</h3>
           </div>
-          <ul class="experience_details">
+          <ul class="item_details">
             <li>Participated in GSoC in 2023 and 2024 as a Mentee, 2025 as a Mentor</li>
             <li>Mentored two engineers through their projects (CCExtractor v1.00 Release, Rewriting lib_ccx)</li>
             <li>Migrated core C modules to Rust, improving reliability and memory safety</li>
@@ -91,151 +79,108 @@
         </div>
       </div>
     </section>
-    <section class="projects_section">
+    <section>
       <h2 class="section_title">Side Projects</h2>
-      <div class="projects_container">
-
-        <div class="experience_card">
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a href="https://github.com/prateekmedia/appimagepool">
-                  AppImage Pool
-                </a>
-              </h2>
-            </div>
-            <h3 class="gh_stars">700+ stars</h3>
+      <div class="item_list">
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a href="https://github.com/prateekmedia/appimagepool">AppImage Pool</a>
+            </h2>
+            <h3 class="item_meta">700+ stars</h3>
           </div>
-          <div class="experience_detail">A clean, easy way to discover and install 500+ Linux apps
-          </div>
+          <div class="item_detail">A clean, easy way to discover and install 500+ Linux apps</div>
         </div>
 
-        <div class="experience_card">
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a href="https://github.com/prateekmedia/pstube">
-                  PsTube
-                </a>
-              </h2>
-            </div>
-            <h3 class="gh_stars">700+ stars</h3>
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a href="https://github.com/prateekmedia/pstube">PsTube</a>
+            </h2>
+            <h3 class="item_meta">700+ stars</h3>
           </div>
-          <div class="experience_detail">Watch and download YouTube videos without ads, on any platform
-          </div>
+          <div class="item_detail">Watch and download YouTube videos without ads, on any platform</div>
         </div>
-        <div class="experience_card">
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a href="https://pub.dev/packages/flutter_speed_dial">
-                  Flutter Speed Dial
-                </a>
-              </h2>
-            </div>
-            <h3 class="gh_stars">1.3k likes</h3>
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a href="https://pub.dev/packages/flutter_speed_dial">Flutter Speed Dial</a>
+            </h2>
+            <h3 class="item_meta">1.3k likes</h3>
           </div>
-          <div class="experience_detail">A popular Flutter package for animated, expandable floating action buttons
-          </div>
+          <div class="item_detail">A popular Flutter package for animated, expandable floating action buttons</div>
         </div>
-        <div class="experience_card">
-
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a href="https://pub.dev/packages/libadwaita">
-                  Libadwaita
-                </a>
-              </h2>
-            </div>
-            <h3 class="gh_stars">700+ stars</h3>
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a href="https://pub.dev/packages/libadwaita">Libadwaita</a>
+            </h2>
+            <h3 class="item_meta">700+ stars</h3>
           </div>
-          <div class="experience_detail">Brought GNOME's beautiful design language to Flutter apps everywhere
-          </div>
+          <div class="item_detail">Brought GNOME's beautiful design language to Flutter apps everywhere</div>
         </div>
 
-        <div class="experience_card">
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a href="https://github.com/prateekmedia/netspeedsimplified">
-                  NetSpeed Simplified
-                </a>
-              </h2>
-            </div>
-            <h3 class="gh_stars">700+ stars</h3>
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a href="https://github.com/prateekmedia/netspeedsimplified">NetSpeed Simplified</a>
+            </h2>
+            <h3 class="item_meta">700+ stars</h3>
           </div>
-          <div class="experience_detail">See your internet speed at a glance, right in your GNOME desktop panel
-          </div>
+          <div class="item_detail">See your internet speed at a glance, right in your GNOME desktop panel</div>
         </div>
       </div>
     </section>
 
-    <section class="blogs_section">
+    <section>
       <h2 class="section_title">Blogs</h2>
-      <div class="projects_container">
-        <div class="experience_card">
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a href="https://prateek.sunal.in/blog/vibing-fast-and-slow/">
-                  Vibing Fast and Slow
-                </a>
-              </h2>
-            </div>
+      <div class="item_list">
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a href="https://prateek.sunal.in/blog/vibing-fast-and-slow/">Vibing Fast and Slow</a>
+            </h2>
           </div>
         </div>
-        <div class="experience_card">
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a href="https://ente.com/blog/ensu/">
-                  Ensu - Ente's Local LLM app
-                </a>
-              </h2>
-            </div>
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a href="https://ente.com/blog/ensu/">Ensu - Ente's Local LLM app</a>
+            </h2>
           </div>
         </div>
       </div>
     </section>
 
-
-
-    <section class="talks_section">
+    <section>
       <h2 class="section_title">Talks</h2>
-      <div class="projects_container">
-        <div class="experience_card">
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a
-                  href="https://www.linkedin.com/posts/prateek-sunal_a-quick-look-at-my-talk-on-entes-approach-activity-7375950836784492544-NIAK">
-                  End to end encrypted video streaming in Ente Photos
-                </a>
-              </h2>
-            </div>
+      <div class="item_list">
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a
+                href="https://www.linkedin.com/posts/prateek-sunal_a-quick-look-at-my-talk-on-entes-approach-activity-7375950836784492544-NIAK">
+                End to end encrypted video streaming in Ente Photos
+              </a>
+            </h2>
           </div>
         </div>
-        <div class="experience_card">
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7384140059542925313/">
-                  Open Source Software and Technologies
-                </a>
-              </h2>
-            </div>
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a href="https://www.linkedin.com/feed/update/urn:li:activity:7384140059542925313/">
+                Open Source Software and Technologies
+              </a>
+            </h2>
           </div>
         </div>
-        <div class="experience_card">
-          <div class="experience_header">
-            <div class="experience_info">
-              <h2 class="experience_name">
-                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7405541338479460353/">
-                  How Flutter Desktop is used within Ente Auth
-                </a>
-              </h2>
-            </div>
+        <div class="item_card">
+          <div class="item_header">
+            <h2 class="item_name">
+              <a href="https://www.linkedin.com/feed/update/urn:li:activity:7405541338479460353/">
+                How Flutter Desktop is used within Ente Auth
+              </a>
+            </h2>
           </div>
         </div>
       </div>
