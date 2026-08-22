@@ -70,6 +70,11 @@ function loadBlog(mdPath) {
         inList = false;
       }
 
+      if (line.match(/^-{3,}$/)) {
+        html += '<hr>';
+        continue;
+      }
+
       if (line.match(/^# /)) {
         var text = line.slice(2);
         html += '<h1 id="' + slugify(text) + '">' + inline(text) + '</h1>';
@@ -127,7 +132,16 @@ function loadBlog(mdPath) {
     var toc = document.createElement('nav');
     toc.className = 'blog-toc';
     var first = true;
+    var seenH1 = false;
 
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].tagName === 'H1') {
+        if (first) { first = false; continue; }
+        seenH1 = true;
+      }
+    }
+
+    first = true;
     for (var i = 0; i < headings.length; i++) {
       var h = headings[i];
       if (first && h.tagName === 'H1') { first = false; continue; }
@@ -135,7 +149,7 @@ function loadBlog(mdPath) {
       var a = document.createElement('a');
       a.href = '#' + h.id;
       a.textContent = h.textContent;
-      if (h.tagName === 'H2') a.className = 'toc-sub';
+      if (h.tagName === 'H2' && seenH1) a.className = 'toc-sub';
       toc.appendChild(a);
     }
 

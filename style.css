@@ -273,6 +273,8 @@ footer a {
 .blog-post h2 {
   font-size: 1.1rem;
   text-transform: none;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
 }
@@ -290,6 +292,12 @@ footer a {
   color: #333;
   margin-bottom: 0.75rem;
   line-height: 1.7;
+}
+
+.blog-post hr {
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 2rem 0;
 }
 
 .blog-post ul {
