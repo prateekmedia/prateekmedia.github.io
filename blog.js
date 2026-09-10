@@ -35,6 +35,8 @@ function loadBlog(mdPath) {
     var lines = parsed.body.split('\n');
     var html = '';
     var inList = false;
+    var inQuote = false;
+    var quoteBlock = '';
     var inCode = false;
     var codeBlock = '';
 
@@ -55,6 +57,7 @@ function loadBlog(mdPath) {
           inCode = false;
         } else {
           if (inList) { html += '</ul>'; inList = false; }
+          if (inQuote) { html += quoteBlock + '</p></blockquote>'; inQuote = false; quoteBlock = ''; }
           inCode = true;
         }
         continue;
@@ -70,6 +73,12 @@ function loadBlog(mdPath) {
         inList = false;
       }
 
+      if (inQuote && !line.match(/^> ?/)) {
+        html += quoteBlock + '</p></blockquote>';
+        inQuote = false;
+        quoteBlock = '';
+      }
+
       if (line.match(/^-{3,}$/)) {
         html += '<hr>';
         continue;
@@ -77,6 +86,7 @@ function loadBlog(mdPath) {
 
       if (line.match(/^# /)) {
         var text = line.slice(2);
+        if (meta.title && slugify(text) === slugify(meta.title)) continue;
         html += '<h1 id="' + slugify(text) + '">' + inline(text) + '</h1>';
         continue;
       }
@@ -88,6 +98,21 @@ function loadBlog(mdPath) {
       if (line.match(/^### /)) {
         var text = line.slice(4);
         html += '<h3 id="' + slugify(text) + '">' + inline(text) + '</h3>';
+        continue;
+      }
+
+      if (line.match(/^> ?/)) {
+        var text = line.replace(/^> ?/, '');
+        if (!inQuote) {
+          inQuote = true;
+          quoteBlock = '<blockquote><p>' + inline(text);
+        } else {
+          if (text === '') {
+            quoteBlock += '</p><p>';
+          } else {
+            quoteBlock += '<br>' + inline(text);
+          }
+        }
         continue;
       }
 
@@ -103,6 +128,7 @@ function loadBlog(mdPath) {
     }
 
     if (inList) html += '</ul>';
+    if (inQuote) html += quoteBlock + '</p></blockquote>';
     if (inCode) html += '<pre><code>' + escapeHtml(codeBlock) + '</code></pre>';
 
     return html;

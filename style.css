@@ -361,6 +361,23 @@ footer a {
   color: #555;
 }
 
+.blog-post blockquote {
+  border-left: 2px solid #ccc;
+  padding-left: 1rem;
+  margin: 1.25rem 0;
+  font-style: italic;
+  color: #555;
+}
+
+.blog-post blockquote p {
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.blog-post blockquote p:last-child {
+  margin-bottom: 0;
+}
+
 /* Blog TOC */
 .blog-toc {
   border: 1px solid #e0e0e0;
