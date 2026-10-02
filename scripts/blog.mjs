@@ -203,6 +203,7 @@ ${items}
 <footer>
   <p><a href="/">${profile.name}</a> &middot; <a href="/feed.xml">RSS</a></p>
 </footer>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "e4f7c1169a5b41e4a7812ad339e69c68"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
 `
