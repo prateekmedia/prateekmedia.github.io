@@ -24,7 +24,14 @@ function inline(text) {
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*(.+?)\*/g, "<em>$1</em>")
     .replace(/`([^`]+)`/g, "<code>$1</code>")
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => `<a href="${href}">${stripTracking(label)}</a>`)
+}
+
+function stripTracking(text) {
+  return text
+    .replace(/([?&]|&amp;)utm_[^&\s]*/g, "$1")
+    .replace(/(\?|&amp;|&)(?:&amp;|&)+/g, "$1")
+    .replace(/(\?|&amp;|&)(?=\s|$)/g, "")
 }
 
 function stripTags(html) {
@@ -256,6 +263,14 @@ ${posts.map((post) => `- [${post.title}](${profile.url}/blog/${post.slug}/${post
 ${external.length ? `\n## Optional\n\n${external.map(({ title, url, summary }) => `- [${title}](${url})${summary ? `: ${summary}` : ""}`).join("\n")}\n` : ""}`
 }
 
+function withoutTracking(url) {
+  const parsed = new URL(url)
+  for (const param of [...parsed.searchParams.keys()]) {
+    if (param.startsWith("utm_")) parsed.searchParams.delete(param)
+  }
+  return parsed.toString()
+}
+
 export function renderProfileJson() {
   const toEntries = (items, pick) => Object.fromEntries(items.map((item) => [item.key, pick(item)]))
 
@@ -266,8 +281,8 @@ export function renderProfileJson() {
     location: profile.location,
     avatar: profile.avatar,
     links: toEntries(profile.links, ({ value }) => value),
-    blogs: toEntries(profile.blogs, ({ url }) => url),
-    "external-blogs": toEntries(profile.externalBlogs, ({ url }) => url),
+    blogs: toEntries(profile.blogs, ({ url }) => withoutTracking(url)),
+    "external-blogs": toEntries(profile.externalBlogs, ({ url }) => withoutTracking(url)),
   }, null, 2)}\n`
 }
 

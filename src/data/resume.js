@@ -19,7 +19,7 @@ export const experience = [
   },
   {
     company: "Ente",
-    companyUrl: "https://ente.com",
+    companyUrl: "https://ente.com/?utm_source=prateek",
     repoUrl: "https://github.com/ente-io/ente",
     stars: "28.5k",
     date: "Jan 2024 – Mar 2026",
@@ -39,14 +39,14 @@ export const experience = [
       "Smart albums support for automatically adding photos of selected person in an album",
       [
         "Created ",
-        link("Ensu", "https://ente.com/blog/ensu/"),
+        link("Ensu", "https://ente.com/blog/ensu/?utm_source=prateek"),
         ", a local LLM app, maintaining it across all platforms (",
         link("#1 on HackerNews", "https://news.ycombinator.com/item?id=47516650"),
         ")",
       ],
       [
         "Engineered a desktop version of the 2FA app, ",
-        link("Ente Auth", "https://ente.com/auth"),
+        link("Ente Auth", "https://ente.com/auth/?utm_source=prateek"),
         ", used by 300k users",
       ],
     ],

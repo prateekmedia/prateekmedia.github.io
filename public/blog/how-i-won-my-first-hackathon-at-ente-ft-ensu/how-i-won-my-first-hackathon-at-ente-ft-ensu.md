@@ -70,6 +70,6 @@ The results were announced, and my website had 3x the visits of the 2nd-ranked h
 
 After that, I kept working on Ensu and made it available across platforms: native apps for Android and iOS, plus a Tauri app for desktop. Now it is an official product by Ente. Read more here:
 
-[https://ente.com/blog/ensu/](https://ente.com/blog/ensu/)
+[https://ente.com/blog/ensu/](https://ente.com/blog/ensu/?utm_source=prateek)
 
 P.S. I still haven't thrown a party for winning :(

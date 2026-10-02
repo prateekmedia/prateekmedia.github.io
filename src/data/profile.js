@@ -63,7 +63,7 @@ export const profile = {
     {
       key: "ensu",
       title: "Ensu — Ente's local LLM app",
-      url: "https://ente.com/blog/ensu/",
+      url: "https://ente.com/blog/ensu/?utm_source=prateek",
       summary: "Product write-up on Ente’s site (related project)",
     },
   ],
