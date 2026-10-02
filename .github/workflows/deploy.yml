@@ -27,9 +27,10 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Install and build
+      - name: Install, lint and build
         run: |
           npm ci
+          npm run lint
           npm run build
 
       - name: Upload Pages artifact

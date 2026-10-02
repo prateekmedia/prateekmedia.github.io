@@ -5,7 +5,7 @@ import { createProfileResponse, HTTP_HEADERS, TERMINAL_TIMING, TOKEN_KIND } from
 import { useTerminalIntro } from "./useTerminalIntro"
 import "./hacker.css"
 
-const COMMAND = `curl https://${profile.domain} -i`
+const COMMAND = `curl https://${profile.domain}/api -i`
 const RESPONSE_LINES = createProfileResponse(profile)
 
 const asciiStart = (
@@ -33,7 +33,7 @@ function TerminalToken({ token }) {
     return (
       <ExternalLink
         href={token.href}
-        className="underline decoration-emerald-600 underline-offset-4 transition-colors hover:text-white"
+        className="underline decoration-emerald-600 underline-offset-4 transition-colors hover:text-white focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
         onClick={(event) => event.stopPropagation()}
       >
         &quot;{token.value}&quot;
@@ -68,7 +68,9 @@ export default function HackerView() {
       onClick={revealResponse}
     >
       <div className="mx-auto min-h-dvh w-full max-w-5xl px-5 py-10 sm:px-8">
-        <div aria-live="polite" className="leading-relaxed">
+        <h1 className="sr-only">{profile.name}, {profile.role}</h1>
+        <p className="sr-only">Press Enter or Escape to skip the intro.</p>
+        <div className="leading-relaxed">
           <div className="crt-glow whitespace-pre-wrap break-all">
             <span className="text-emerald-600">$ </span>
             <span className="text-zinc-100">{COMMAND.slice(0, typedLength)}</span>

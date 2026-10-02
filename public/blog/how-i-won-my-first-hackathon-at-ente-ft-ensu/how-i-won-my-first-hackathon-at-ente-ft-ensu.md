@@ -2,6 +2,7 @@
 title: How I Won My First Hackathon at Ente ft. Ensu
 date: October 1, 2026
 author: Prateek Sunal
+summary: Ensu hackathon, launch, and traction
 ---
 
 # How I Won My First Hackathon at Ente ft. Ensu

@@ -14,6 +14,12 @@ body {
   color-scheme: light;
 }
 
+html {
+  scroll-padding-top: 4rem;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
 html[data-mode="hacker"],
 html[data-mode="hacker"] body {
   background: #040705;

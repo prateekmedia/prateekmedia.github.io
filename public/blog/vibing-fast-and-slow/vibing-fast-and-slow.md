@@ -2,6 +2,7 @@
 title: Vibing Fast and Slow
 date: April 11, 2026
 author: Prateek Sunal
+summary: Fast vs slow phases when using AI coding agents
 ---
 
 Over the last year, I’ve been trying to understand this shift in software development where developers have started becoming vibe coders, and vibe coders have started, well… doing nothing.

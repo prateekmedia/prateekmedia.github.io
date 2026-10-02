@@ -1,8 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 
+const SKIP_KEYS = new Set(["Enter", "Escape"])
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+}
+
 export function useTerminalIntro(command, timing) {
-  const [typedLength, setTypedLength] = useState(0)
-  const [hasResponse, setHasResponse] = useState(false)
+  const [isInstant] = useState(prefersReducedMotion)
+  const [typedLength, setTypedLength] = useState(isInstant ? command.length : 0)
+  const [hasResponse, setHasResponse] = useState(isInstant)
   const typewriterRef = useRef()
   const responseRef = useRef()
 
@@ -12,6 +19,8 @@ export function useTerminalIntro(command, timing) {
   }, [])
 
   useEffect(() => {
+    if (isInstant) return undefined
+
     typewriterRef.current = window.setInterval(() => {
       setTypedLength((currentLength) => {
         const nextLength = Math.min(currentLength + 1, command.length)
@@ -30,7 +39,7 @@ export function useTerminalIntro(command, timing) {
     )
 
     return clearTimers
-  }, [clearTimers, command, timing])
+  }, [clearTimers, command, isInstant, timing])
 
   const revealResponse = useCallback(() => {
     clearTimers()
@@ -38,5 +47,16 @@ export function useTerminalIntro(command, timing) {
     setHasResponse(true)
   }, [clearTimers, command.length])
 
-  return { typedLength, hasResponse, revealResponse }
+  useEffect(() => {
+    if (hasResponse) return undefined
+
+    const handleKeyDown = (event) => {
+      if (SKIP_KEYS.has(event.key) && !event.target.closest?.("button, a")) revealResponse()
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [hasResponse, revealResponse])
+
+  return { typedLength, hasResponse, isInstant, revealResponse }
 }

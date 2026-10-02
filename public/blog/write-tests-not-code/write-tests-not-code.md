@@ -2,6 +2,7 @@
 title: Write Tests, Not Code
 date: September 11, 2026
 author: Prateek Sunal
+summary: Tests as feedback loops and TDD mindset
 ---
 
 # Write Tests, Not Code

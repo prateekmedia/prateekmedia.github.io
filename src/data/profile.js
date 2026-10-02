@@ -14,18 +14,21 @@ export const profile = {
       label: "GitHub",
       value: "github.com/prateekmedia",
       url: "https://github.com/prateekmedia",
+      summary: "Open source and projects",
     },
     {
       key: "linkedin",
       label: "LinkedIn",
       value: "linkedin.com/in/prateek-sunal",
       url: "https://www.linkedin.com/in/prateek-sunal",
+      summary: "Professional profile",
     },
     {
       key: "x",
       label: "X",
       value: "x.com/prateek_su",
       url: "https://x.com/prateek_su",
+      summary: "Posts and updates",
     },
     {
       key: "email",
@@ -55,10 +58,13 @@ export const profile = {
       title: "Vibing Fast and Slow",
       url: "https://prateek.sunal.in/blog/vibing-fast-and-slow",
     },
+  ],
+  externalBlogs: [
     {
       key: "ensu",
       title: "Ensu — Ente's local LLM app",
       url: "https://ente.com/blog/ensu/",
+      summary: "Product write-up on Ente’s site (related project)",
     },
   ],
 }

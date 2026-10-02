@@ -55,8 +55,8 @@ export function createProfileResponse(profile) {
   addLine(punctuation("  }"), punctuation(","))
   addLine(punctuation("  "), key('"blogs"'), punctuation(" {"))
 
-  profile.blogs.forEach((blog, index) => {
-    const comma = index < profile.blogs.length - 1 ? "," : ""
+  const addBlogs = (blogs) => blogs.forEach((blog, index) => {
+    const comma = index < blogs.length - 1 ? "," : ""
     addLine(
       punctuation("    "),
       key(`"${blog.key}"`),
@@ -66,6 +66,10 @@ export function createProfileResponse(profile) {
     )
   })
 
+  addBlogs(profile.blogs)
+  addLine(punctuation("  }"), punctuation(","))
+  addLine(punctuation("  "), key('"external-blogs"'), punctuation(" {"))
+  addBlogs(profile.externalBlogs)
   addLine(punctuation("  }"))
   addLine(punctuation("}"))
 

@@ -1,33 +1,5 @@
 import { useEffect, useState } from "react"
-
-const BRIGHTNESS_RAMP = "@%#*+=~-:. "
-
-function pixelsToAscii(pixelData, columns, rows) {
-  const lines = []
-
-  for (let y = 0; y < rows; y += 1) {
-    let line = ""
-
-    for (let x = 0; x < columns; x += 1) {
-      const pixelIndex = (y * columns + x) * 4
-      const luminance = (
-        0.2126 * pixelData[pixelIndex]
-        + 0.7152 * pixelData[pixelIndex + 1]
-        + 0.0722 * pixelData[pixelIndex + 2]
-      ) / 255
-      const rampIndex = Math.min(
-        BRIGHTNESS_RAMP.length - 1,
-        Math.floor((1 - luminance) * BRIGHTNESS_RAMP.length),
-      )
-
-      line += BRIGHTNESS_RAMP[rampIndex]
-    }
-
-    lines.push(line.trimEnd())
-  }
-
-  return lines
-}
+import { asciiRows, pixelsToAscii } from "./ascii"
 
 function useAsciiImage(source, columns) {
   const [lines, setLines] = useState([])
@@ -40,7 +12,7 @@ function useAsciiImage(source, columns) {
     image.onload = () => {
       if (isCancelled) return
 
-      const rows = Math.max(1, Math.round((image.height / image.width) * columns))
+      const rows = asciiRows(image.width, image.height, columns)
       const canvas = document.createElement("canvas")
       canvas.width = columns
       canvas.height = rows

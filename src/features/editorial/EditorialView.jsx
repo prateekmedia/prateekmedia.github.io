@@ -19,7 +19,7 @@ export default function EditorialView() {
         </p>
 
         <header className="mt-12 flex items-end justify-between gap-8">
-          <h1 className="text-6xl leading-[0.95] tracking-tight sm:text-7xl">
+          <h1 className="text-6xl leading-[0.95] tracking-tight text-balance sm:text-7xl">
             {profile.firstName}
             <br />
             <em className="font-light">{profile.lastName}</em>
@@ -27,7 +27,10 @@ export default function EditorialView() {
           <img
             src={profile.avatar}
             alt={profile.name}
+            width="96"
+            height="96"
             decoding="async"
+            fetchPriority="high"
             className="h-20 w-20 shrink-0 rounded-full object-cover grayscale sm:h-24 sm:w-24"
           />
         </header>
@@ -45,7 +48,7 @@ export default function EditorialView() {
             <ExternalLink
               key={link.key}
               href={link.url}
-              className="group inline-flex items-center gap-1.5 text-zinc-800"
+              className="group inline-flex items-center gap-1.5 rounded-sm text-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-900"
             >
               {socialIcons[link.key]}
               <span className="underline decoration-zinc-300 underline-offset-4 transition-colors group-hover:decoration-zinc-900">
@@ -60,13 +63,13 @@ export default function EditorialView() {
             Writing
           </h2>
           <ul>
-            {profile.blogs.map((blog) => (
+            {[...profile.blogs, ...profile.externalBlogs].map((blog) => (
               <li key={blog.key} className="border-b border-zinc-200">
                 <ExternalLink
                   href={blog.url}
-                  className="group flex items-baseline justify-between gap-6 py-5"
+                  className="group flex items-baseline justify-between gap-6 py-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
                 >
-                  <span className="text-xl transition-colors group-hover:text-zinc-500">
+                  <span className="min-w-0 text-xl break-words text-pretty transition-colors group-hover:text-zinc-500">
                     {blog.title}
                   </span>
                   <span className="shrink-0 font-sans text-[11px] uppercase tracking-[0.2em] text-zinc-400">
@@ -80,7 +83,7 @@ export default function EditorialView() {
 
         <footer className="mt-20 flex items-center justify-between font-sans text-[11px] uppercase tracking-[0.25em] text-zinc-400">
           <span>© {new Date().getFullYear()}</span>
-          <a href={profile.url} className="hover:text-zinc-700">
+          <a href={profile.url} className="rounded-sm hover:text-zinc-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900">
             {profile.domain}
           </a>
         </footer>

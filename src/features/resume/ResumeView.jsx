@@ -79,7 +79,7 @@ function TalksList() {
     <div className="resume-talks">
       {talks.map((talk) => (
         <ExternalLink href={talk.url} className="resume-talk" key={talk.title}>
-          <img src={talk.image} alt={talk.event} loading="lazy" decoding="async" />
+          <img src={talk.image} alt={talk.event} width="72" height="48" loading="lazy" decoding="async" />
           <div>
             <strong>{talk.title}</strong>
             <span className="resume-date">{talk.event}</span>
@@ -140,7 +140,7 @@ export default function ResumeView() {
           <ResumeSection title="Talks"><TalksList /></ResumeSection>
           <ResumeSection title="Blogs">
             <ul className="resume-link-list">
-              {profile.blogs.map((blog) => (
+              {[...profile.blogs, ...profile.externalBlogs].map((blog) => (
                 <li key={blog.key}>
                   <ExternalLink href={blog.url}>{blog.title}</ExternalLink>
                 </li>

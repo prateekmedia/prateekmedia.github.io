@@ -2,6 +2,7 @@
 title: Never Skip: How to Farm in a Brownfield Site
 date: August 23, 2026
 author: Prateek Sunal
+summary: Working effectively in legacy codebases
 ---
 
 "It's a one-line change."
