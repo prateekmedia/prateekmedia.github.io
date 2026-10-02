@@ -15,9 +15,14 @@ body {
 }
 
 html {
-  scroll-padding-top: 4rem;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 40rem) {
+  html {
+    scroll-padding-top: 4rem;
+  }
 }
 
 html[data-mode="hacker"],

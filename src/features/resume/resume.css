@@ -9,7 +9,13 @@
 .resume-shell {
   width: min(100%, 680px);
   margin: 0 auto;
-  padding: 6rem 1.5rem 3rem;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+@media (min-width: 40rem) {
+  .resume-shell {
+    padding-top: 6rem;
+  }
 }
 
 .resume-page a {

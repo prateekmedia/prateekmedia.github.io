@@ -33,7 +33,7 @@ export default function ModeSwitcher({ modes, value, onChange }) {
 
   return (
     <div
-      className={`fixed top-4 right-4 z-50 flex items-center gap-1 rounded-full border p-1 font-mono text-xs backdrop-blur transition-colors duration-300 sm:text-sm ${
+      className={`relative z-50 mx-auto mt-4 flex w-fit items-center sm:fixed sm:top-4 sm:right-4 sm:mt-0 gap-1 rounded-full border p-1 font-mono text-xs backdrop-blur transition-colors duration-300 sm:text-sm ${
         isHackerMode
           ? "border-emerald-500/30 bg-black/70 text-emerald-400"
           : "border-zinc-200 bg-white/80 text-zinc-500 shadow-sm"
