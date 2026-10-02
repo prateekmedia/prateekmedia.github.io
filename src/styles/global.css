@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: #faf9f7;
+  color-scheme: light;
+}
+
+html[data-mode="hacker"],
+html[data-mode="hacker"] body {
+  background: #040705;
+  color-scheme: dark;
+}
+
+html[data-mode="resume"],
+html[data-mode="resume"] body {
+  background: #fafafa;
+}
+
+::selection {
+  background: rgba(74, 222, 128, 0.35);
+}

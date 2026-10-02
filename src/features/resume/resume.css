@@ -1,0 +1,260 @@
+.resume-page {
+  min-height: 100dvh;
+  background: #fafafa;
+  color: #1a1a1a;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.resume-shell {
+  width: min(100%, 680px);
+  margin: 0 auto;
+  padding: 6rem 1.5rem 3rem;
+}
+
+.resume-page a {
+  color: #1a1a1a;
+  text-decoration-color: #999;
+  text-underline-offset: 2px;
+}
+
+.resume-page a:hover {
+  text-decoration-color: #1a1a1a;
+}
+
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resume-header h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.resume-meta,
+.resume-date {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.resume-meta {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.resume-nav {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+.resume-section {
+  margin-bottom: 2.5rem;
+}
+
+.resume-section h2 {
+  margin-bottom: 1rem;
+  color: #888;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.resume-list dt {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-top: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.resume-list > div + div {
+  margin-top: 1.25rem;
+}
+
+.resume-list dt a {
+  text-decoration: none;
+}
+
+.resume-list dt a:hover {
+  text-decoration: underline;
+  text-decoration-color: #999;
+}
+
+.resume-link-list li {
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.resume-link-list li:first-child {
+  margin-top: 0;
+}
+
+.resume-link-list a {
+  text-decoration: none;
+}
+
+.resume-link-list a:hover {
+  text-decoration: underline;
+  text-decoration-color: #999;
+}
+
+.resume-list dd {
+  margin: 0.15rem 0 0;
+  color: #444;
+  font-size: 0.88rem;
+}
+
+.resume-list dd.resume-sub {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.resume-list dd.resume-bullet::before {
+  color: #ccc;
+  content: "- ";
+}
+
+.resume-inline-link {
+  color: #666 !important;
+  text-decoration-color: #ccc !important;
+}
+
+.resume-date {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.resume-badge,
+.resume-stars {
+  color: #666 !important;
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-decoration: none !important;
+}
+
+.resume-badge {
+  position: relative;
+  top: -1px;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.15rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  background: #f0f0f0;
+}
+
+.resume-badge:hover {
+  background: #e4e4e4;
+  color: #333 !important;
+}
+
+.resume-talks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.resume-talk {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.resume-talk:hover {
+  background: #f0f0f0;
+}
+
+.resume-talk img {
+  width: 72px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.resume-talk strong,
+.resume-talk .resume-date {
+  display: block;
+}
+
+.resume-talk strong {
+  font-size: 0.9rem;
+}
+
+.resume-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.resume-chip {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 100px;
+  color: #444 !important;
+  font-size: 0.82rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.resume-chip strong {
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+a.resume-chip:hover {
+  border-color: #aaa;
+  color: #1a1a1a !important;
+}
+
+.resume-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+  color: #888;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.resume-footer a {
+  color: #888;
+}
+
+@media (min-width: 640px) {
+  .resume-shell {
+    padding-top: 3rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .resume-header,
+  .resume-list dt {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .resume-header {
+    gap: 1rem;
+  }
+
+  .resume-list dt {
+    gap: 0.1rem;
+  }
+}

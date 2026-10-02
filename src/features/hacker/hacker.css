@@ -1,0 +1,85 @@
+.crt-glow {
+  text-shadow: 0 0 5px rgba(74, 222, 128, 0.4);
+}
+
+.ascii-glow {
+  filter: drop-shadow(0 0 3px rgba(74, 222, 128, 0.35));
+}
+
+.crt-screen::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    rgba(0, 0, 0, 0.22) 3px,
+    rgba(0, 0, 0, 0.22) 4px
+  );
+}
+
+.crt-screen::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 41;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret-blink {
+  animation: caret-blink 0.9s step-end infinite;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  margin-left: 0.08em;
+  border-radius: 1px;
+  background: currentColor;
+  vertical-align: -0.14em;
+}
+
+@keyframes line-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.line-in {
+  opacity: 0;
+  animation: line-in 0.12s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret-blink,
+  .line-in {
+    animation: none;
+  }
+
+  .line-in {
+    opacity: 1;
+  }
+}
